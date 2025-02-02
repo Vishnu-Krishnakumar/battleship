@@ -15,25 +15,30 @@ const Gameboard  = () =>{
   let ships = 0;
   
   const place  = (ship,x,y,horizontal = true)=>{
-    if(outOfbounds(x,y)) return "can't place a ship here!";
-    fill(horizontal,ship,x,y);     
+    if(outOfbounds(x,y)) return false;
+    return fill(horizontal,ship,x,y);     
   }
 
   const fill = (bool,ship,x,y) =>{
-    if(!check(bool,ship,x,y)){ return console.log("cant place a ship here")}
+    if(!check(bool,ship,x,y)){ return false}
     if(bool){
       for(let i = 0; i < ship.length; i++){
         shipPlacement[y][x+i] = ship
         board[y][x+i] = 1;}
+        return true;
     }
     else{
       for(let i = 0; i < ship.length; i++){
         shipPlacement[y+i][x] = ship
-        board[y+i][x] = 1; }
+        board[y+i][x] = 1;
+        return true; 
+      }
     }
     ships++;
   }
-
+  const getBoard  =()=>{
+    return board;
+  }
   const boardState = ()=>{
     if (ships <= 0){return console.log("All ships are destroyed");}
     else console.log(`${ships} out of 5 ships are left`);
@@ -44,19 +49,23 @@ const Gameboard  = () =>{
       board[y][x] = 'X';
       shipPlacement[y][x].hit(1);
       if(shipPlacement[y][x].isSunk()){ships--}
+      return true;
     }
-    else board[y][x] = '?';
+    else {
+      board[y][x] = '?';
+      return false;
+    }
   }
 
   const check = (bool,ship,x,y)=>{
     if(bool){
       for(let i = 0; i < ship.length; i++){
-        if(outOfbounds(x+1,y)) return false;
+        if(outOfbounds(x,y)) return false;
         if(board[y][x+i] === 1){return false;}
     }}
     else{
       for(let i = 0; i < ship.length; i++){
-        if(outOfbounds(x,y-1)) return false;
+        if(outOfbounds(x,y)) return false;
         if(board[y-i][x] === 1) {return false;}
       }}
     return true;
@@ -69,9 +78,9 @@ const Gameboard  = () =>{
   }
 
   function outOfbounds(x,y){
-    if(x > 10 || x < 0 || y > 10 || y < 0) return true;
+    if(x >= 9 || x < 0 || y > 9 || y < 0) return true;
   }
-  return {board,place,view,shipPlacement,recieveAttack,boardState};
+  return {board,place,view,shipPlacement,recieveAttack,boardState,getBoard};
 }
 
 

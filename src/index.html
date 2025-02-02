@@ -5,13 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dist/bundles.css">
     <!-- <link rel="icon" type="image/x-icon" href="/favicon.ico"> -->
-    <script src="dist/bundle.js"></script>
+    <script src="dist/bundle.js" defer></script>
     <title>Document</title>
 </head>
 <body>
-    <div id = "main">
-        <div id = "title">BattleShip</div>
-        <div id = "grid"></div>
+  <div id = "main">
+  <div id = "title">BattleShip</div>
+    <div id = "player_Boards">
+      <div id ="player_One"></div>
+      <div id ="player_Two"></div>
     </div>
+    <div id = "player_Ships">
+        <img id ="carrier" src ="img/carrier.PNG" >
+        <img id ="battleShip" src ="img/battleship.PNG" >
+        <img id = "cruiser" src ="img/cruiser.PNG">
+        <img id = "submarine" src ="img/submarine.PNG">
+        <img id = "destroyer" src ="./img/destroyer.PNG">
+    </div> 
+  </div>
 </body>
 </html>
