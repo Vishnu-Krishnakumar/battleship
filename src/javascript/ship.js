@@ -10,7 +10,9 @@ const Ship = (size = 0)=>{
     }
     const isSunk = ()=>{
       if (damage >= length) return true
-      else return false;
+      else{
+        return false
+      } 
     }
     return {length,hit,sunk,getDamage,isSunk};
   

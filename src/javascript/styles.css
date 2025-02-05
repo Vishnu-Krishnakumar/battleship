@@ -1,51 +1,107 @@
 body{
     background-color: darkblue;
 }
+#playerName{
+    margin-top: 70px;
+    display:flex;
+    justify-content: center;
+}
 #player_Boards{
     display: flex;
     justify-content: center;
+    
+}
+#playerOneName{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 50px;
+}
+#playerTwoName{
+    text-align: center;
+    margin-top: 50px;
+    font-size: 50px;
 }
 #player_One{
     display: grid;
     background-color: white;
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    grid-template-columns:repeat(10, 1fr);
     margin-left: auto;
     margin-right: 50px;
-    margin-top: 200px;
+    margin-top: 50px;
+    position: relative;
+    text-align: center;
+}
+#player_One #mark{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:none;
+    grid-row:1;
+    grid-column:1;
+    align-items: center;
+    justify-content: center;
+  
+}
+#player_Two #mark{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:none;
+    grid-row:1;
+    grid-column:1;
+    align-items: center;
+    justify-content: center;
 }
 #player_One div{
     height:45px;
     width:45px;
     border:solid black;
 }
+
 #player_Two{
     display:grid;
     background-color: white;
-    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
+    grid-template-columns: repeat(10, 1fr);
     margin-right: auto;
-    margin-left: 50px;
-    margin-top: 200px;
+    margin-top: 50px;
+    position: relative;
+    text-align: center;
 }
+
 #player_Two div{
     height:45px;
     width:45px;
     border:solid black;
 }
+#winner{
+    font-size: 100px;
+    text-align: center;
+}
+#player_Ships{
+    display: flex;
+    flex-direction: column;
+    
+}
+#player_Ships img{
+    padding-bottom: 20px;
+}
 img{
     height:45px;
+    grid-row:1;
+    grid-column:1;
 }
-img :nth-child(1){
-    width:225px;
+#carrier{
+    width:249px;
 }
-img::nth-child(2){
-    width:180px;
+#battleShip{
+    width:198px;
 }
-:nth-child(3){
-    width:135px;
+#cruiser{
+    width:147px;
 }
-:nth-child(4){
-    width:135px;
+#submarine{
+    width:147px;
 }
-:nth-child(5){
-    width:90px;
+#destroyer{
+    width:96px;
 }

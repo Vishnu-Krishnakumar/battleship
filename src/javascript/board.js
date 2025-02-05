@@ -25,47 +25,52 @@ const Gameboard  = () =>{
       for(let i = 0; i < ship.length; i++){
         shipPlacement[y][x+i] = ship
         board[y][x+i] = 1;}
+        ships++;
         return true;
     }
     else{
       for(let i = 0; i < ship.length; i++){
         shipPlacement[y+i][x] = ship
         board[y+i][x] = 1;
+        ships++;
         return true; 
       }
     }
-    ships++;
+    
   }
   const getBoard  =()=>{
     return board;
   }
+
   const boardState = ()=>{
-    if (ships <= 0){return console.log("All ships are destroyed");}
-    else console.log(`${ships} out of 5 ships are left`);
+    if (ships <= 0){return true;}
+    else return false;
   }
 
   const recieveAttack = (x,y)=>{
-    if(board[y][x] === 1){
-      board[y][x] = 'X';
-      shipPlacement[y][x].hit(1);
-      if(shipPlacement[y][x].isSunk()){ships--}
+    if(board[x][y] === "X" || board[x][y] === '?') return false;
+    if(board[x][y] === 1){
+      board[x][y] = 'X';
+      shipPlacement[x][y].hit(1);
+      if(shipPlacement[x][y].isSunk()){ships--}
       return true;
     }
     else {
-      board[y][x] = '?';
+      board[x][y] = '?';
       return false;
     }
+    return false;
   }
 
   const check = (bool,ship,x,y)=>{
     if(bool){
       for(let i = 0; i < ship.length; i++){
-        if(outOfbounds(x,y)) return false;
+        if(outOfbounds(x+i,y)) return false;
         if(board[y][x+i] === 1){return false;}
     }}
     else{
       for(let i = 0; i < ship.length; i++){
-        if(outOfbounds(x,y)) return false;
+        if(outOfbounds(x,y-i)) return false;
         if(board[y-i][x] === 1) {return false;}
       }}
     return true;
@@ -78,7 +83,7 @@ const Gameboard  = () =>{
   }
 
   function outOfbounds(x,y){
-    if(x >= 9 || x < 0 || y > 9 || y < 0) return true;
+    if(x > 9 || x < 0 || y > 9 || y < 0) return true;
   }
   return {board,place,view,shipPlacement,recieveAttack,boardState,getBoard};
 }

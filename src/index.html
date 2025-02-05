@@ -10,18 +10,29 @@
 </head>
 <body>
   <div id = "main">
-  <div id = "title">BattleShip</div>
-    <div id = "player_Boards">
+  <div id = "playerName">
+    <input type = "text" id = "nameForm">
+    <button id ="playerOneSubmit">Player One</button>
+  </div>
+  <div id = "player_Boards">
+    <div>
+      <div id ="playerOneName">Admiral Terry</div>
       <div id ="player_One"></div>
-      <div id ="player_Two"></div>
-    </div>
-    <div id = "player_Ships">
+      <div id = "player_Ships">
         <img id ="carrier" src ="img/carrier.PNG" >
         <img id ="battleShip" src ="img/battleship.PNG" >
         <img id = "cruiser" src ="img/cruiser.PNG">
         <img id = "submarine" src ="img/submarine.PNG">
         <img id = "destroyer" src ="./img/destroyer.PNG">
-    </div> 
+      </div> 
+    </div>
+    <div>
+      <div id ="playerTwoName">Admiral Jacob</div>
+      <div id ="player_Two"></div>
+    </div>
+  </div>
+  <div id = "winner"> </div>
+  
   </div>
 </body>
 </html>
